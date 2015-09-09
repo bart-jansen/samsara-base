@@ -1,0 +1,1 @@
+This is a starting scaffolding for a SamsaraJS project.

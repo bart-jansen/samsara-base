@@ -1,0 +1,3 @@
+[submodule "js/samsara"]
+	path = js/samsara
+	url = git@github.com:dmvaldman/samsara.git
