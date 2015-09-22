@@ -2,3 +2,11 @@ html {
     background : black;
     height : 100%;
 }
+
+#samsara {
+    font-family: "Noto Serif", "Georgia";
+    font-weight: 700;
+    font-size: 36px;
+    color: white;
+    text-align:center;
+}
