@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
     var Engine = require('samsara/core/Engine');
     var Transform = require('samsara/core/Transform');
-    var LayoutNode = require('samsara/core/nodes/LayoutNode');
+    var LayoutNode = require('samsara/core/LayoutNode');
     var Transitionable = require('samsara/core/Transitionable');
     var Wedge = require('app/Wedge');
 

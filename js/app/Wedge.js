@@ -2,8 +2,8 @@ define(function(require, exports, module) {
     var View = require('samsara/core/View');
     var Transform = require('samsara/core/Transform');
     var Surface = require('samsara/core/Surface');
-    var ContainerSurface = require('samsara/surfaces/ContainerSurface');
-    var LayoutNode = require('samsara/core/nodes/LayoutNode');
+    var ContainerSurface = require('samsara/core/ContainerSurface');
+    var LayoutNode = require('samsara/core/LayoutNode');
 
     /**
      * A wedge is a angular section of a circle. It's created
