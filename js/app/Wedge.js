@@ -15,13 +15,13 @@ define(function(require, exports, module) {
      */
     var Wedge = View.extend({
         defaults : {
-            size : [200, 200],
             angle : 0
         },
         initialize : function(options){
             // containing surface to apply skew to
             var skewedContainer = new ContainerSurface({
-                size : options.size,
+                proportions : [1/3, undefined],
+                aspectRatio : 1,
                 properties : {
                     overflow : 'hidden',
                     border: '1px solid transparent',
@@ -31,14 +31,18 @@ define(function(require, exports, module) {
 
             // a circle to apply inverse skew to
             var wedge = new Surface({
-                size : options.size,
                 origin : [.5,.5],
                 properties : {
                     borderRadius : '50%',
-                    borderWidth :  options.size[0]/3 + 'px',
                     borderColor : 'rgba(255,255,255,' + 0.9 + ')',
                     borderStyle : 'solid'
                 }
+            });
+
+            wedge.on('resize', function(size){
+                wedge.setProperties({
+                    borderWidth : Math.round(size[0]/3) + 'px'
+                })
             });
 
             // animation from the View's input

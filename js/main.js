@@ -7,11 +7,12 @@ define(function(require, exports, module) {
 
     // parameters
     var N = 6;                              // number of wedges
-    var wedgeSize = [200, 200];             // size of the wedge
     var swivel = new Transitionable(0);     // animation parameter
 
     // create a 3d context
-    var context = Engine.createContext();
+    var context = Engine.createContext({
+        el : document.getElementById('app')
+    });
 
     // center the logo with a layout node
     var centerLayout = new LayoutNode({align : [.5,.5]});
@@ -23,7 +24,6 @@ define(function(require, exports, module) {
     var rotation = 0;
     for (var index = 0; index < N; index++){
         var wedge = new Wedge({
-            size : wedgeSize,
             angle : 2 * Math.PI / N
         });
 
