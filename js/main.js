@@ -5,45 +5,49 @@ define(function(require, exports, module) {
     var Transitionable = require('samsara/core/Transitionable');
     var Wedge = require('app/Wedge');
 
-    // parameters
+    /* State*/
     var N = 6;                              // number of wedges
     var swivel = new Transitionable(0);     // animation parameter
 
-    // create a 3d context
+    // Define the insertion point for Samsara in a provided DOM element.
+    // If no element is provided one will be created and appended into
+    // the document's `<body>`
+    // The `samsara-context` CSS class is added to the element, defining
+    // a 3D HTML context.
     var context = Engine.createContext({
         el : document.getElementById('app')
     });
 
-    // center the logo with a layout node
+    // Position the origin of the logo at the center.
     var centerLayout = new LayoutNode({align : [.5,.5]});
 
-    // a reference to the render tree starting from the centerLayout
+    // A reference to the render tree starting from the centered point
     var centeredNode = context.add(centerLayout);
 
-    // create N wedges to form the logo
+    // Create N wedges to form the logo.
     var rotation = 0;
     for (var index = 0; index < N; index++){
         var wedge = new Wedge({
             angle : 2 * Math.PI / N
         });
 
-        // the wedge now listens to changes in swivel
+        // The wedge now listens to changes in swivel
         wedge.input.subscribe(swivel);
 
-        // rotate each wedge circularly
+        // Rotate each wedge to form a ring
         var rotateLayout = new LayoutNode({
             transform : Transform.rotateZ(rotation)
         });
 
-        // add the wedge to the render tree
+        // Add the wedge to the render tree
         centeredNode.add(rotateLayout).add(wedge);
 
         rotation += 2 * Math.PI / N;
     }
 
-    // initiate the animation
+    // Initiate the animation
     swivel.loop([4*Math.PI, 0], {duration : 30000, curve : 'easeInOut'});
 
-    // start samsara
+    // Start the request animation frame
     Engine.start();
 });
